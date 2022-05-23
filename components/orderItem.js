@@ -17,12 +17,14 @@ export default function OrderItem({order, index}) {
   const checkAction = () =>
     dispatch({
       type: 'CHECK',
-      index: index
+      index: index,
+      price: parseFloat(order.price)
     })
   const uncheckAction = () =>
     dispatch({
       type: 'UNCHECK',
-      index: index
+      index: index,
+      price: parseFloat(order.price)
     })
   
   const {name,

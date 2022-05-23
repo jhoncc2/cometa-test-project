@@ -3,23 +3,31 @@ import { useReducer, useContext, createContext } from 'react'
 const PaymentStateContext = createContext()
 const PaymentDispatchContext = createContext()
 
-const initialState = {paid: [0,0], due: [0,0], outstanding: [0,0], paymentIndex: 0}
+const initialState = {
+  paid: [0,0], 
+  due: [0,0], 
+  outstanding: [0,0], 
+  paymentIndex: 0
+}
 
 const reducer = (state, action) => {
+  const {paymentIndex} = state
+
   switch (action.type) {
     case 'CHECK':
-      if(state.paymentIndex != action.index) 
+      if(paymentIndex != action.index) 
         throw new Error(`Unknown action: ${action.type}`)
-      return {...state, paymentIndex: state.paymentIndex+1}
+      return {...state, 
+        paymentIndex: paymentIndex+1
+      }
     case 'UNCHECK':
-      // if(state.paymentIndex -1 === action.index) 
-        return {...state, paymentIndex: action.index}
-      // else 
-      //   return state
+        return {...state, 
+          paymentIndex: action.index
+        }
     case 'UPDATE_INDEXES':
       return {...state, 
           ...action.data, // override state
-          paymentIndex: action.data.due[0] // update payment index
+          paymentIndex: action.data.due[0], // update payment index
         }
     default:
       throw new Error(`Unknown action: ${action.type}`)

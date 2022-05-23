@@ -1,19 +1,20 @@
 import Head from "next/head";
-import { useMemo, useState } from "react";
-import OrderItem, { STATUS } from "../components/orderItem";
 import { PaymentProvider } from "../components/paymentProvider";
-import PaymentSection from "../components/paymentSection";
-import { arrangeStateIndex } from "../libs/utils";
 import InstalmentForm from "../components/instalmentForm";
+import { Section } from "../components/section";
+import StudentInfo from "../components/studentInfo";
 
 export default function Instalment({student, orders}) {
-  
   return (
     <>
       <Head>
         <title>School Instalment</title>
       </Head>
       <PaymentProvider>
+        <Section>
+          <StudentInfo student={student} orders={orders}/>
+        </Section>
+      
         <InstalmentForm orders={orders}/>
       </PaymentProvider>
       

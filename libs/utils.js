@@ -3,6 +3,7 @@ export function sum(a, b) {
 }
 
 /**
+ * NOTE: LEGACY
  * function that group orders by status
  **/
 export function arrangeOrders(orders) {
@@ -19,7 +20,7 @@ export function arrangeOrders(orders) {
 }
 
 /**
- * (This code works under the assumption that we know ALL the status in the app)
+ * NOTE: This code works under the assumption that we know ALL the status in the app
  * PAID | DUE | OUTSTANDING
  * 
  * returns an object where the attributes are the status

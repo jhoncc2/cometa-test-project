@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useMemo, useState } from "react";
+import { useEffect } from "react";
 import OrderItem, { STATUS } from "./orderItem";
 import { PaymentProvider, useDispatchPayment, usePayment } from "./paymentProvider";
 import PaymentSection from "./paymentSection";
@@ -15,7 +15,10 @@ export default function InstalmentForm({orders}) {
       data: data
     })
 
-  useMemo(() => handleUpdate(arrangeStateIndex(orders)), [orders])
+    useEffect(() =>{
+      handleUpdate(arrangeStateIndex(orders))
+    }, [orders])
+  
 
   return (
     <>
