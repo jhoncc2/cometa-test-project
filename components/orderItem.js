@@ -3,6 +3,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from "react";
 import { Checkbox, IconButton } from '@mui/material';
 import { useDispatchPayment, usePayment } from './paymentProvider';
+import Money from './money';
 // Define kwnon status, avoid typos
 export const STATUS = {
   OUTSTANDING: 'OUTSTANDING',
@@ -31,6 +32,7 @@ export default function OrderItem({order, index}) {
     price, 
     interest,
     due,
+    price_currency,
     status,
     payin} = order
 
@@ -49,10 +51,13 @@ export default function OrderItem({order, index}) {
             {reduction?
               <div className={styles.reduction}>${reduction}</div>
               :<></> }
-              <span/>${price}
+              <span/>
+              <Money value={price} currency={price_currency}/>
             </div>
             {interest?
-              <div className={styles.description}>Interés: ${interest}</div>
+              <div className={styles.description}>
+                <Money value={interest} currency={price_currency} label={'Interés:'}/>
+              </div>
               :<></> }
           </div>
           <Checkbox

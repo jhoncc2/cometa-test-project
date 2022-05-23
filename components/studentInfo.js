@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import Money from './money'
 import { usePayment } from './paymentProvider'
 import styles from './studentInfo.module.css'
 
@@ -26,7 +27,7 @@ export default function StudentInfo({student, orders}) {
       </div>
       <div className={styles.totalContainer}>
         <div>{'Total a Pagar'}</div>
-        <div>${total? total: '--'}</div>
+        <div>{total? <Money value={total} />: '$--'}</div>
       </div>
     </div> 
   )
