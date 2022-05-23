@@ -2,14 +2,28 @@ import styles from './orderItem.module.css'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from "react";
 import { Checkbox, IconButton } from '@mui/material';
+import { useDispatchPayment, usePayment } from './paymentProvider';
 // Define kwnon status, avoid typos
-const STATUS = {
+export const STATUS = {
   OUTSTANDING: 'OUTSTANDING',
   DUE: 'DUE',
   PAID: 'PAID'
 }
 
-export default function OrderItem({order, index, paymentIndex}) {
+export default function OrderItem({order, index}) {
+  const {paymentIndex} = usePayment()
+  const dispatch = useDispatchPayment()
+
+  const checkAction = () =>
+    dispatch({
+      type: 'CHECK',
+      index: index
+    })
+  const uncheckAction = () =>
+    dispatch({
+      type: 'UNCHECK',
+      index: index
+    })
   
   const {name,
     price, 
@@ -41,11 +55,17 @@ export default function OrderItem({order, index, paymentIndex}) {
           </div>
           <Checkbox
             className={styles.checkbox}
-            onChange={() => {}} 
+            onChange={() => {
+              paymentIndex > index
+                ? uncheckAction()
+                : checkAction()
+            }}
             sx={{ '& .MuiSvgIcon-root': { 
-              fontSize: 35, 
+              fontSize: 40, 
               borderRadius: 0,
-            } }}
+            }}}
+            disabled={index <= paymentIndex? false: true}
+            checked={index >= paymentIndex? false: true}
             />
         </div>
         :

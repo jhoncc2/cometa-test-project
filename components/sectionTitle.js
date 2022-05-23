@@ -4,9 +4,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import styles from './sectionTitle.module.css'
 import { useState } from "react";
 
-export default function SectionTitle({title, description, onOpen}) {
-  const [open, setOpen] = useState(false)
-
+export default function SectionTitle({title, description, onOpen, isOpen}) {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
@@ -18,7 +16,6 @@ export default function SectionTitle({title, description, onOpen}) {
           aria-label="rotate" 
           color="primary" 
           onClick={()=> {
-            setOpen(!open)
             onOpen()
             }}>
           <KeyboardArrowDownIcon
@@ -26,7 +23,7 @@ export default function SectionTitle({title, description, onOpen}) {
               { 
                 transform: "rotate(0deg)"
               },
-              open && {
+              isOpen && {
                 transform: "rotate(-180deg)"
               }
             ]}
