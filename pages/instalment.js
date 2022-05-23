@@ -3,6 +3,7 @@ import { PaymentProvider } from "../components/paymentProvider";
 import InstalmentForm from "../components/instalmentForm";
 import { Section } from "../components/section";
 import StudentInfo from "../components/studentInfo";
+import Layout from "../components/layout";
 
 export default function Instalment({student, orders}) {
   return (
@@ -10,14 +11,15 @@ export default function Instalment({student, orders}) {
       <Head>
         <title>School Instalment</title>
       </Head>
-      <PaymentProvider>
-        <Section>
-          <StudentInfo student={student} orders={orders}/>
-        </Section>
-      
-        <InstalmentForm orders={orders}/>
-      </PaymentProvider>
-      
+      <Layout student={student}>
+        <PaymentProvider>
+          <Section>
+            <StudentInfo student={student} orders={orders}/>
+          </Section>
+        
+          <InstalmentForm orders={orders}/>
+        </PaymentProvider>
+      </Layout>
     </>
   );
 }

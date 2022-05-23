@@ -22,7 +22,7 @@ export default function StudentInfo({student, orders}) {
     <div className={styles.container}>
       <div className={styles.titleContainer}>
         <div>{student.first_name + ' ' + student.last_name}</div>
-        <div>{student.school.name}</div>
+        <div>{student.cohort}</div>
       </div>
       <div className={styles.totalContainer}>
         <div>{'Total a Pagar'}</div>

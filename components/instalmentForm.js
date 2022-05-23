@@ -1,9 +1,10 @@
-import Head from "next/head";
 import { useEffect } from "react";
 import OrderItem, { STATUS } from "./orderItem";
-import { PaymentProvider, useDispatchPayment, usePayment } from "./paymentProvider";
+import { useDispatchPayment, usePayment } from "./paymentProvider";
 import PaymentSection from "./paymentSection";
 import { arrangeStateIndex } from "../libs/utils";
+import { Button } from "@mui/material";
+import styles from "./instalmentForm.module.css";
 
 export default function InstalmentForm({orders}) {
   const payment = usePayment()
@@ -44,6 +45,9 @@ export default function InstalmentForm({orders}) {
             initiallyOpened={true}
             status={STATUS.OUTSTANDING.toLocaleLowerCase()}
           />
+      </div>
+      <div className={styles.submitButton}>
+        <Button className={styles.Button} variant="contained">IR A PAGAR</Button>
       </div>
     </>
   );

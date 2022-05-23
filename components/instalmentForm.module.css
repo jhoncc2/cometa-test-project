@@ -1,0 +1,23 @@
+.submitButton {
+  position: fixed;
+  bottom: 1rem;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Button {
+  background-color: black;
+  color: white;
+  background: black;
+  width: 70%;
+  border-radius: 2rem;
+  font-size: calc(0.8rem + 1vw);
+  font-weight: lighter;
+  padding: 0.7rem;
+}
+
+.Button:hover {
+  background-color: black;
+}
