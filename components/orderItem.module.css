@@ -1,0 +1,43 @@
+.container {
+  margin: 0.5rem 0;
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  font-weight: lighter;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.reduction {
+  color: rgb(167, 166, 166);
+  padding-right: 0.3rem;
+}
+
+.description {
+  background-color: white;
+  font-size: calc(0.5em + 1vw);
+}
+.detailsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkbox {
+  padding: 0 0 0 0.5rem;
+}
