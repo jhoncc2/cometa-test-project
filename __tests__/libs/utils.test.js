@@ -1,4 +1,4 @@
-import { arrangeStateIndex, arrangeOrders, sum } from '../../libs/utils'
+import { arrangeStateIndex, arrangeOrders, sum, getMonthDifference } from '../../libs/utils'
 
 describe('sum', () => {
   it('the sum', () => {
@@ -37,6 +37,21 @@ describe('arrangeStateIndex', () => {
     // OUTSTANDING
     expect(res.outstanding[0]).toBe(2)
     expect(res.outstanding[1]).toBe(mockOrders.length)
+  })
+})
+
+describe('getMonthDifference', () => {
+  it('same year', () => {
+    const res = getMonthDifference(new Date('2022-01-15'), new Date('2022-03-16'))
+    expect(res).toBe(2)
+  })
+  it('different year', () => {
+    const res = getMonthDifference(new Date('2022-01-15'), new Date('2023-03-16'))
+    expect(res).toBe(14)
+  })
+  it('reversed param dates', () => {
+    const res = getMonthDifference(new Date('2023-03-16'), new Date('2022-01-15'))
+    expect(res).toBe(14)
   })
 })
 

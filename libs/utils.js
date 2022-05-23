@@ -27,7 +27,7 @@ export function arrangeOrders(orders) {
  * of orders (e.g. status=DUE).
  * The attibutes are an array with a pair of indexes (integers).
  * Such that they surround the elements in the array 'orders'
- * @param orders - array
+ * @param {array} orders
  * @returns - {<order.status>: [iniIndex<int>, endIndex<int>]}
  **/
  export function arrangeStateIndex(orders) {
@@ -45,3 +45,18 @@ export function arrangeOrders(orders) {
   return res
 }
 
+/**
+ * Calculates the month difference (internet code)
+ * 
+ * @param {Date} startDate 
+ * @param {Date} endDate 
+ * @returns a number with the month difference
+ */
+export function getMonthDifference(startDate, endDate) {
+  
+  
+  const diff = endDate.getMonth() -
+        startDate.getMonth() +
+        12 * (endDate.getFullYear() - startDate.getFullYear())
+  return Math.abs(diff)
+}

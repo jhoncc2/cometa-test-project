@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Checkbox, IconButton } from '@mui/material';
 import { useDispatchPayment, usePayment } from './paymentProvider';
 import Money from './money';
+import DueDate from './dueDate';
 // Define kwnon status, avoid typos
 export const STATUS = {
   OUTSTANDING: 'OUTSTANDING',
@@ -42,7 +43,9 @@ export default function OrderItem({order, index}) {
     <div className={styles.container}>
       <div className={styles.titleContainer}>
         <div className={styles.title}>{name}</div>
-        <div className={styles.description}>{due}</div>
+        <div className={styles.description}>
+          <DueDate order={order}/>
+        </div>
       </div>
       {status !== STATUS.PAID ? 
         <div className={styles.detailsContainer}>
